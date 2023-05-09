@@ -17,7 +17,8 @@ else:
     ssl._create_default_https_context = _create_unverified_https_context
 
 # Read in a directory of txt files as the corpus using the os library.
-corpusdir = '/scratch/users/bcritt/corpus/'
+user = os.getenv('USER')
+corpusdir = '/scratch/users/{}/corpus/'.format(user)
 corpus = []
 for infile in os.listdir(corpusdir):
     with open(corpusdir+infile, errors='ignore') as fin:
@@ -38,4 +39,4 @@ sorpus = re.sub(r'(\\n[ \t]*)+', '', sorpus)
 sentences = sent_tokenize(sorpus)
 
 df = pd.DataFrame(sentences)
-df.to_csv('/scratch/users/bcritt/outputs/sentences.csv')
+df.to_csv('/scratch/users/{}/outputs/sentences.csv'.format(user)))
