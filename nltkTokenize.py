@@ -18,7 +18,7 @@ else:
 
 # Read in a directory of txt files as the corpus using the os library.
 user = os.getenv('USER')
-corpusdir = '/farmshare/learning/data/emerson/'
+corpusdir = '/scratch/users/{}/corpus'.format(user)
 corpus = []
 for infile in os.listdir(corpusdir):
     with open(corpusdir+infile, errors='ignore') as fin:
