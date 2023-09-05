@@ -7,8 +7,7 @@ from nltk.tokenize import sent_tokenize
 nltk.download('punkt')
 
 
-# This may or may not be necessary for you. Gives python permission to access the internet so we can download 
-libraries.
+# This may or may not be necessary for you. Gives python permission to access the internet so we can download libraries.
 try:
     _create_unverified_https_context = ssl._create_unverified_context
 except AttributeError:
@@ -18,7 +17,7 @@ else:
 
 # Read in a directory of txt files as the corpus using the os library.
 user = os.getenv('USER')
-corpusdir = '/scratch/users/{}/corpus/'.format(user)
+corpusdir = '/farmshare/learning/data/emerson/'
 corpus = []
 for infile in os.listdir(corpusdir):
     with open(corpusdir+infile, errors='ignore') as fin:
@@ -28,7 +27,7 @@ for infile in os.listdir(corpusdir):
 sorpus = str(corpus)
 
 # this particular corpus has a multitude of "\n's" due to its original encoding. This removes them; code can be 
-modified to remove other text artifacts before tokenizing.
+#modified to remove other text artifacts before tokenizing.
 
 sorpus = re.sub(r'(\\n[ \t]*)+', '', sorpus)
 
@@ -39,4 +38,4 @@ sorpus = re.sub(r'(\\n[ \t]*)+', '', sorpus)
 sentences = sent_tokenize(sorpus)
 
 df = pd.DataFrame(sentences)
-df.to_csv('/scratch/users/{}/outputs/sentences.csv'.format(user)))
+df.to_csv('/scratch/users/{}/outputs/sentences.csv'.format(user))
