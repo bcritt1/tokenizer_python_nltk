@@ -8,7 +8,7 @@ nltk.download('punkt')
 
 
 # This may or may not be necessary for you. Gives python permission to access the internet so we can download 
-libraries.
+#libraries.
 try:
     _create_unverified_https_context = ssl._create_unverified_context
 except AttributeError:
@@ -28,7 +28,7 @@ for infile in os.listdir(corpusdir):
 sorpus = str(corpus)
 
 # this particular corpus has a multitude of "\n's" due to its original encoding. This removes them; code can be 
-modified to remove other text artifacts before tokenizing.
+#modified to remove other text artifacts before tokenizing.
 
 sorpus = re.sub(r'(\\n[ \t]*)+', '', sorpus)
 
@@ -39,4 +39,4 @@ sorpus = re.sub(r'(\\n[ \t]*)+', '', sorpus)
 sentences = sent_tokenize(sorpus)
 
 df = pd.DataFrame(sentences)
-df.to_csv('/scratch/users/{}/outputs/sentences.csv'.format(user)))
+df.to_csv('/scratch/users/{}/outputs/sentences.csv'.format(user))
